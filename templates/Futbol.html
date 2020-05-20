@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block contenido %}
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Portfolio Grid Items -->
+      <div class="row">
+
+        <!-- Portfolio Item 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto"> <!--data-toggle="modal" data-target="#portfolioModal1"-->
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+              <div class="portfolio-item-caption-content text-center text-white">
+                <a href="/Futbol"><i class="fas fa-plus fa-3x"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Portfolio Item 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto">
+              <h3 class="alert alert-warning" role="alert">Futbol :</h3>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto"> 
+              <ul class="list-group">
+                {% for Equipo in Equipos %}
+                    <li class="list-group-item"><a data-toggle="modal" data-target="#{{ Equipo }}">{{ Equipo }}</a></li>
+                {% endfor %}
+              </ul>
+          </div>
+        </div>
+        
+      </div>
+      <!-- /.row -->
+
+  <!-- Portfolio Modal -->
+ {% for Equipo in Equipos %}
+  <div class="portfolio-modal modal fade" id="{{ Equipo }}" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+        <div class="modal-body text-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <!-- Portfolio Modal - Title -->
+                <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">{{ Equipo }}</h2>
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                  <div class="divider-custom-line"></div>
+                  <div class="divider-custom-icon">
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="divider-custom-line"></div>
+                </div>
+                
+            
+                <!-- Portfolio Modal - Text -->
+                <p class="mb-5">
+                
+ {% if Equipo == "Pumas": %}
+                El Club Universidad Nacional A. C., también conocido como Pumas de la UNAM o Pumas UNAM, es un equipo de futbol profesional de la Primera División de México, fundado el 2 de agosto de 1954.Representa a la Universidad Nacional Autónoma de México la cual es su propietario; pero es administrado y financiado por el denominado Patronato Universitario del Club Universidad, una asociación civil conformada por universitarios notables y empresarios, en donde el Rector de la UNAM funge como Presidente Honorario y decide la elección del Presidente de Patronato por medio de la Asamblea de Socios del mismo Club Universidad Nacional. Juega sus partidos como local en el Estadio Olímpico Universitario de la Ciudad de México y sus colores tradicionales son el azul y el dorado.
+  {% elif Equipo == "Barcelona": %}
+                El Fútbol Club Barcelona (en catalán, Futbol Club Barcelona), conocido popularmente como Barça, es una entidad polideportiva de Barcelona, España. Fue fundado como club de fútbol el 29 de noviembre de 1899 y registrado oficialmente el 5 de enero de 1903.Es uno de los cuatro clubes profesionales de España junto a Real Madrid Club de Fútbol, Athletic Club y Club Atlético Osasuna que no es sociedad anónima, de manera que la propiedad del club recae en sus socios.
+  {% endif %}
+              </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+{% endblock %}
